@@ -56,20 +56,31 @@ const PAGE_COMPONENTS: Record<Page, React.ComponentType<PageProps>> = {
 };
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    if (!localStorage.getItem("ec_auth")) {
+      localStorage.setItem("ec_auth", "true");
+      localStorage.setItem("ec_role", "admin");
+    }
+    return localStorage.getItem("ec_auth") === "true";
+  });
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
   const [currentPage, setCurrentPage] = useState<Page>("home");
-  const [currentRole, setCurrentRole] = useState<UserRole>("organizer");
+  const [currentRole, setCurrentRole] = useState<UserRole>(() => (localStorage.getItem("ec_role") as UserRole) || "admin");
   const [collapsed, setCollapsed] = useState(false);
 
   const handleLogin = () => {
+    localStorage.setItem("ec_auth", "true");
+    localStorage.setItem("ec_role", "admin");
     setIsLoggedIn(true);
+    setCurrentRole("admin");
     setShowAuth(false);
     setCurrentPage("home");
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("ec_auth");
+    localStorage.removeItem("ec_role");
     setIsLoggedIn(false);
     setShowAuth(false);
   };
