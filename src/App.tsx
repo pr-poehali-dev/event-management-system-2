@@ -201,11 +201,11 @@ export default function App() {
               }}
             >
               <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-700" style={{ background: "hsl(var(--sidebar-primary))" }}>
-                АИ
+                АКМ
               </div>
               {!collapsed && (
                 <div className="animate-fade-in text-left overflow-hidden">
-                  <div className="text-sm font-medium text-white truncate leading-tight">Алексей И.</div>
+                  <div className="text-sm font-medium text-white truncate leading-tight">Адаменко К.</div>
                   <div className="text-xs truncate" style={{ color: "hsl(var(--sidebar-foreground) / 0.55)" }}>{ROLE_LABELS[currentRole]}</div>
                 </div>
               )}
