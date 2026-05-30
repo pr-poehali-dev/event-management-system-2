@@ -91,21 +91,29 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden" style={{ background: "#f5f7fc" }}>
+      <section className="relative overflow-hidden">
+        {/* Фоновое изображение */}
+        <img
+          src="https://cdn.poehali.dev/projects/c5e2d73a-eff7-45ad-90d8-72fd817b5865/files/3952e5f9-55d3-41b1-9817-5d4232ef7644.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Тёмный overlay для читаемости текста */}
+        <div className="absolute inset-0" style={{ background: "rgba(10,20,50,0.55)" }} />
         {/* Тонкая полоска триколора сверху */}
-        <div className="absolute top-0 left-0 right-0 flex h-0.5 opacity-60">
-          <div className="flex-1 bg-white border border-slate-200" />
+        <div className="absolute top-0 left-0 right-0 flex h-0.5 opacity-70 z-10">
+          <div className="flex-1 bg-white" />
           <div className="flex-1" style={{ background: C.blue }} />
           <div className="flex-1" style={{ background: C.red }} />
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl sm:text-5xl font-800 text-foreground leading-tight tracking-tight mb-5" style={{ letterSpacing: "-0.03em" }}>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
+          <h1 className="text-4xl sm:text-5xl font-800 text-white leading-tight tracking-tight mb-5" style={{ letterSpacing: "-0.03em", textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
             Единая система<br />
-            <span style={{ color: C.blue }}>управления</span>{" "}мероприятиями
+            <span style={{ color: "#7eb3ff" }}>управления</span>{" "}мероприятиями
           </h1>
 
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>
             Организуйте мероприятия любого масштаба — от публичных форумов до закрытых совещаний с предварительной модерацией, разграничением доступа и контролем безопасности.
           </p>
 
@@ -113,29 +121,19 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
             <button
               onClick={onRegister}
               className="flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-md text-white transition-all hover:opacity-90 hover:-translate-y-0.5"
-              style={{ background: C.blue, boxShadow: `0 3px 10px ${C.blueAlpha(0.28)}` }}
+              style={{ background: C.blue, boxShadow: `0 3px 14px rgba(0,0,0,0.35)` }}
             >
               <Icon name="UserPlus" size={15} />
               Начать бесплатно
             </button>
             <button
               onClick={onLogin}
-              className="flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-md border bg-white transition-all hover:bg-slate-50"
-              style={{ borderColor: "#d1d5db", color: "#374151" }}
+              className="flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-md transition-all hover:bg-white/15"
+              style={{ border: "1px solid rgba(255,255,255,0.35)", color: "#fff" }}
             >
               <Icon name="LogIn" size={15} />
               Войти в систему
             </button>
-          </div>
-
-          {/* Flag image */}
-          <div className="mt-10 max-w-3xl mx-auto rounded-xl overflow-hidden animate-slide-up" style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.13)" }}>
-            <img
-              src="https://cdn.poehali.dev/projects/c5e2d73a-eff7-45ad-90d8-72fd817b5865/files/3952e5f9-55d3-41b1-9817-5d4232ef7644.jpg"
-              alt="Флаг Российской Федерации"
-              className="w-full object-cover"
-              style={{ height: 260 }}
-            />
           </div>
 
           {/* Hero preview */}
