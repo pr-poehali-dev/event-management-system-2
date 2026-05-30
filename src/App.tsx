@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Icon from "@/components/ui/icon";
+import LandingPage from "@/pages/LandingPage";
+import AuthPage from "@/pages/AuthPage";
 import HomePage from "@/pages/HomePage";
 import EventsPage from "@/pages/EventsPage";
 import ApplicationsPage from "@/pages/ApplicationsPage";
@@ -54,10 +56,56 @@ const PAGE_COMPONENTS: Record<Page, React.ComponentType<PageProps>> = {
 };
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const [currentRole, setCurrentRole] = useState<UserRole>("organizer");
   const [collapsed, setCollapsed] = useState(false);
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setShowAuth(false);
+    setCurrentPage("home");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setShowAuth(false);
+  };
+
+  const openAuth = (mode: "login" | "register") => {
+    setAuthMode(mode);
+    setShowAuth(true);
+  };
+
+  // ── Публичные экраны (лендинг / авторизация) ──
+  if (!isLoggedIn) {
+    if (showAuth) {
+      return (
+        <TooltipProvider>
+          <Toaster />
+          <AuthPage
+            mode={authMode}
+            onLogin={handleLogin}
+            onBack={() => setShowAuth(false)}
+            onSwitchMode={(m) => setAuthMode(m)}
+          />
+        </TooltipProvider>
+      );
+    }
+    return (
+      <TooltipProvider>
+        <Toaster />
+        <LandingPage
+          onLogin={() => openAuth("login")}
+          onRegister={() => openAuth("register")}
+        />
+      </TooltipProvider>
+    );
+  }
+
+  // ── Приложение для авторизованных ──
   const PageComponent = PAGE_COMPONENTS[currentPage];
 
   return (
@@ -204,8 +252,12 @@ export default function App() {
                 <Icon name="Bell" size={17} />
                 <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full" />
               </button>
-              <button className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
-                <Icon name="HelpCircle" size={17} />
+              <button
+                onClick={handleLogout}
+                className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                title="Выйти"
+              >
+                <Icon name="LogOut" size={17} />
               </button>
             </div>
           </header>
