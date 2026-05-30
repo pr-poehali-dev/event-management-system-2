@@ -1,6 +1,13 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const C = {
+  blue: "#2251a3",
+  blueDark: "#162447",
+  red: "#a8192a",
+  blueAlpha: (a: number) => `rgba(34,81,163,${a})`,
+};
+
 interface Props {
   mode: "login" | "register";
   onLogin: () => void;
@@ -39,29 +46,29 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
       {/* ── Левая панель — декоративная ── */}
       <div
         className="hidden lg:flex flex-col justify-between w-[420px] shrink-0 p-10 relative overflow-hidden"
-        style={{ background: "#0f2a5e" }}
+        style={{ background: C.blueDark }}
       >
         {/* Триколор полосы снизу */}
-        <div className="absolute bottom-0 left-0 right-0 flex h-1.5">
-          <div className="flex-1 bg-white" />
-          <div className="flex-1" style={{ background: "#003DA5" }} />
-          <div className="flex-1" style={{ background: "#CC0000" }} />
+        <div className="absolute bottom-0 left-0 right-0 flex h-1">
+          <div className="flex-1 bg-white opacity-40" />
+          <div className="flex-1 opacity-70" style={{ background: C.blue }} />
+          <div className="flex-1 opacity-70" style={{ background: C.red }} />
         </div>
 
         {/* Геометрический фон */}
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-4"
           style={{
             backgroundImage: "repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 28px)",
           }}
         />
-        <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full opacity-5" style={{ background: "#003DA5" }} />
-        <div className="absolute -left-8 bottom-32 w-40 h-40 rounded-full opacity-5" style={{ background: "#CC0000" }} />
+        <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full opacity-4" style={{ background: C.blue }} />
+        <div className="absolute -left-8 bottom-32 w-40 h-40 rounded-full opacity-4" style={{ background: C.red }} />
 
         {/* Logo */}
         <div className="relative">
           <button onClick={onBack} className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "#003DA5" }}>
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: C.blue }}>
               <Icon name="Zap" size={17} className="text-white" />
             </div>
             <div>
@@ -75,7 +82,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
         <div className="relative space-y-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-6" style={{ background: "#CC0000" }} />
+              <div className="h-px w-6" style={{ background: C.red }} />
               <span className="text-xs font-medium uppercase tracking-widest text-white/40">Платформа</span>
             </div>
             <h2 className="text-2xl font-800 text-white leading-tight tracking-tight" style={{ letterSpacing: "-0.02em" }}>
@@ -91,7 +98,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
               { icon: "BarChart3", text: "Отчётность и аналитика" },
             ].map((f) => (
               <div key={f.text} className="flex items-center gap-3">
-                <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0" style={{ background: "rgba(0,61,165,0.3)" }}>
+                <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0" style={{ background: C.blueAlpha(0.25) }}>
                   <Icon name={f.icon} size={14} className="text-white" />
                 </div>
                 <span className="text-sm text-white/70">{f.text}</span>
@@ -121,7 +128,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
         {/* Мобильный логотип */}
         <div className="lg:hidden mb-8 flex items-center gap-2">
           <button onClick={onBack} className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "#003DA5" }}>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: C.blue }}>
               <Icon name="Zap" size={15} className="text-white" />
             </div>
             <span className="font-800 text-foreground">EventCore</span>
@@ -149,7 +156,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                     <div
                       className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-700 transition-all"
                       style={{
-                        background: step >= s ? "#003DA5" : "#e2e8f0",
+                        background: step >= s ? C.blue : "#e2e8f0",
                         color: step >= s ? "#fff" : "#94a3b8",
                       }}
                     >
@@ -192,7 +199,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                           placeholder={label}
                           required
                           className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-offset-0 transition-all"
-                          style={{ "--tw-ring-color": "#003DA5" } as React.CSSProperties}
+                          style={{ "--tw-ring-color": C.blue } as React.CSSProperties}
                         />
                       </div>
                     ))}
@@ -265,7 +272,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
 
                 {isLogin && (
                   <div className="flex justify-end">
-                    <button type="button" className="text-xs transition-colors" style={{ color: "#003DA5" }}>
+                    <button type="button" className="text-xs transition-colors" style={{ color: C.blue }}>
                       Забыли пароль?
                     </button>
                   </div>
@@ -281,8 +288,8 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                     key={r.value}
                     className="flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-150"
                     style={{
-                      borderColor: selectedRole === r.value ? "#003DA5" : "#e2e8f0",
-                      background: selectedRole === r.value ? "rgba(0,61,165,0.04)" : "#fff",
+                      borderColor: selectedRole === r.value ? C.blue : "#e2e8f0",
+                      background: selectedRole === r.value ? C.blueAlpha(0.04) : "#fff",
                     }}
                   >
                     <input
@@ -295,9 +302,9 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                     />
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: selectedRole === r.value ? "rgba(0,61,165,0.1)" : "#f1f5f9" }}
+                      style={{ background: selectedRole === r.value ? C.blueAlpha(0.09) : "#f1f5f9" }}
                     >
-                      <Icon name={r.icon} size={20} style={{ color: selectedRole === r.value ? "#003DA5" : "#94a3b8" }} />
+                      <Icon name={r.icon} size={20} style={{ color: selectedRole === r.value ? C.blue : "#94a3b8" }} />
                     </div>
                     <div className="flex-1">
                       <div className="text-sm font-700 text-foreground">{r.label}</div>
@@ -305,10 +312,10 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                     </div>
                     <div
                       className="w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0"
-                      style={{ borderColor: selectedRole === r.value ? "#003DA5" : "#cbd5e1" }}
+                      style={{ borderColor: selectedRole === r.value ? C.blue : "#cbd5e1" }}
                     >
                       {selectedRole === r.value && (
-                        <div className="w-2 h-2 rounded-full" style={{ background: "#003DA5" }} />
+                        <div className="w-2 h-2 rounded-full" style={{ background: C.blue }} />
                       )}
                     </div>
                   </label>
@@ -316,9 +323,9 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
 
                 <div
                   className="p-3 rounded-lg text-xs text-slate-600 flex items-start gap-2 mt-2"
-                  style={{ background: "rgba(0,61,165,0.05)", border: "1px solid rgba(0,61,165,0.12)" }}
+                  style={{ background: C.blueAlpha(0.05), border: `1px solid ${C.blueAlpha(0.12)}` }}
                 >
-                  <Icon name="Info" size={13} className="shrink-0 mt-0.5" style={{ color: "#003DA5" }} />
+                  <Icon name="Info" size={13} className="shrink-0 mt-0.5" style={{ color: C.blue }} />
                   Роль «Организатор» требует дополнительной верификации администратором платформы.
                 </div>
 
@@ -326,16 +333,16 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                 <label className="flex items-start gap-2.5 cursor-pointer mt-3">
                   <div
                     className="w-4 h-4 rounded border-2 flex items-center justify-center mt-0.5 shrink-0 transition-all"
-                    style={{ borderColor: agreed ? "#003DA5" : "#cbd5e1", background: agreed ? "#003DA5" : "#fff" }}
+                    style={{ borderColor: agreed ? C.blue : "#cbd5e1", background: agreed ? C.blue : "#fff" }}
                     onClick={() => setAgreed(!agreed)}
                   >
                     {agreed && <Icon name="Check" size={10} className="text-white" />}
                   </div>
                   <span className="text-xs text-muted-foreground leading-relaxed">
                     Я соглашаюсь с{" "}
-                    <span className="underline cursor-pointer" style={{ color: "#003DA5" }}>условиями использования</span>{" "}
+                    <span className="underline cursor-pointer" style={{ color: C.blue }}>условиями использования</span>{" "}
                     и{" "}
-                    <span className="underline cursor-pointer" style={{ color: "#003DA5" }}>политикой конфиденциальности</span>
+                    <span className="underline cursor-pointer" style={{ color: C.blue }}>политикой конфиденциальности</span>
                   </span>
                 </label>
               </div>
@@ -347,7 +354,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                 type="submit"
                 disabled={!isLogin && step === 2 && !agreed}
                 className="w-full py-2.5 text-sm font-medium rounded-md text-white transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
-                style={{ background: "#003DA5" }}
+                style={{ background: C.blue }}
               >
                 {isLogin
                   ? "Войти в систему"
@@ -386,17 +393,17 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
                 setStep(1);
               }}
               className="font-medium transition-colors hover:opacity-80"
-              style={{ color: "#003DA5" }}
+              style={{ color: C.blue }}
             >
               {isLogin ? "Зарегистрироваться" : "Войти"}
             </button>
           </p>
 
           {/* Триколор декор */}
-          <div className="flex justify-center gap-0.5 mt-8">
-            <div className="h-0.5 w-8 rounded-l-full bg-slate-200" />
-            <div className="h-0.5 w-8" style={{ background: "#003DA5" }} />
-            <div className="h-0.5 w-8 rounded-r-full" style={{ background: "#CC0000" }} />
+          <div className="flex justify-center gap-px mt-8">
+            <div className="h-0.5 w-8 rounded-l-full bg-slate-200 opacity-60" />
+            <div className="h-0.5 w-8 opacity-70" style={{ background: C.blue }} />
+            <div className="h-0.5 w-8 rounded-r-full opacity-70" style={{ background: C.red }} />
           </div>
         </div>
       </div>
