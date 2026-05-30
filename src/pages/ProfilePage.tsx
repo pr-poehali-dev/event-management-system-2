@@ -32,10 +32,10 @@ const statusCfg = {
 };
 
 const systemLogs = [
-  { time: "30.05.2025 14:22", action: "Создано мероприятие «Городской форум»", user: "Алексей И." },
-  { time: "30.05.2025 12:05", action: "Одобрена заявка участника #87", user: "Алексей И." },
+  { time: "30.05.2025 14:22", action: "Создано мероприятие «Городской форум»", user: "Кирилл А." },
+  { time: "30.05.2025 12:05", action: "Одобрена заявка участника #87", user: "Кирилл А." },
   { time: "29.05.2025 18:40", action: "Добавлен волонтёр Захаров К.А.", user: "Мария С." },
-  { time: "29.05.2025 11:15", action: "Изменён статус мероприятия на «Модерация»", user: "Алексей И." },
+  { time: "29.05.2025 11:15", action: "Изменён статус мероприятия на «Модерация»", user: "Кирилл А." },
   { time: "28.05.2025 16:00", action: "Выгружен отчёт за май 2025", user: "Ольга П." },
 ];
 
@@ -95,9 +95,9 @@ export default function ProfilePage({ role, navigate }: PageProps) {
           {/* Role badge */}
           <div className="mt-3 p-3 bg-white rounded-lg border border-border text-center" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-700 text-white mx-auto mb-2" style={{ background: "hsl(var(--primary))" }}>
-              АИ
+              КА
             </div>
-            <div className="text-xs font-700 text-foreground">Алексей Иванов</div>
+            <div className="text-xs font-700 text-foreground">Кирилл Андреев</div>
             <div className="mt-1.5">
               <span className={`badge-status ${roleColors[role]}`}>{ROLE_LABELS[role]}</span>
             </div>
@@ -120,11 +120,11 @@ export default function ProfilePage({ role, navigate }: PageProps) {
                 </div>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
                   {[
-                    { label: "Фамилия Имя Отчество", value: "Иванов Алексей Игоревич" },
-                    { label: "Email", value: "a.ivanov@corp.ru" },
+                    { label: "Фамилия Имя Отчество", value: "Андреев Кирилл Александрович" },
+                    { label: "Email", value: "k.andreev@corp.ru" },
                     { label: "Телефон", value: "+7 912 345-67-89" },
-                    { label: "Организация", value: "ООО «Горизонт»" },
-                    { label: "Должность", value: "Руководитель отдела" },
+                    { label: "Организация", value: "Администрация ЗО" },
+                    { label: "Должность", value: "Администратор платформы" },
                     { label: "Дата регистрации", value: "14 января 2025" },
                   ].map((f) => (
                     <div key={f.label}>
