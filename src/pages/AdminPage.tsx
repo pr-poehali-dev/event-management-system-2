@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { UserRole } from "@/App";
+import { PageProps } from "@/App";
 import Icon from "@/components/ui/icon";
-
-interface Props { role: UserRole }
 
 const users = [
   { id: 1, name: "Алексей Иванов", email: "a.ivanov@corp.ru", role: "organizer", status: "active", lastLogin: "30.05.2025" },
@@ -29,7 +27,7 @@ const roleConfig = {
   guest: { label: "Гость", color: "bg-slate-100 text-slate-600" },
 };
 
-export default function AdminPage({ role }: Props) {
+export default function AdminPage({ role, navigate }: PageProps) {
   const [tab, setTab] = useState<"users" | "categories" | "settings">("users");
 
   if (role !== "admin") {

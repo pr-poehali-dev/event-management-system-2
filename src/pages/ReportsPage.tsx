@@ -1,7 +1,5 @@
-import { UserRole } from "@/App";
+import { PageProps } from "@/App";
 import Icon from "@/components/ui/icon";
-
-interface Props { role: UserRole }
 
 const reports = [
   { name: "Отчёт по мероприятиям за май 2025", type: "Мероприятия", date: "01.06.2025", size: "284 КБ", format: "XLSX" },
@@ -22,7 +20,7 @@ const monthlyData = [
 
 const maxApps = Math.max(...monthlyData.map((d) => d.apps));
 
-export default function ReportsPage({ role }: Props) {
+export default function ReportsPage({ role, navigate }: PageProps) {
   if (role === "guest" || role === "participant" || role === "volunteer") {
     return (
       <div className="p-6 max-w-6xl mx-auto animate-slide-up flex items-center justify-center min-h-[400px]">

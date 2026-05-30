@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { UserRole } from "@/App";
+import { PageProps } from "@/App";
 import Icon from "@/components/ui/icon";
-
-interface Props { role: UserRole }
 
 const events = [
   {
@@ -50,7 +48,7 @@ const statusConfig = {
   closed: { label: "Завершено", color: "bg-blue-100 text-blue-700" },
 };
 
-export default function EventsPage({ role }: Props) {
+export default function EventsPage({ role, navigate }: PageProps) {
   const [filter, setFilter] = useState<"all" | "active" | "moderation" | "draft">("all");
   const [search, setSearch] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<(typeof events)[0] | null>(null);

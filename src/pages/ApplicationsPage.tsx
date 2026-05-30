@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { UserRole } from "@/App";
+import { PageProps } from "@/App";
 import Icon from "@/components/ui/icon";
-
-interface Props { role: UserRole }
 
 const applications = [
   { id: 1, applicant: "Иванов Сергей Петрович", event: "Городской форум предпринимателей", date: "02.06.2025", status: "pending", org: "ООО «Горизонт»", phone: "+7 912 345-67-89", comment: "" },
@@ -22,7 +20,7 @@ const statusConfig = {
   rejected: { label: "Отклонена", color: "bg-red-100 text-red-800", icon: "XCircle" },
 };
 
-export default function ApplicationsPage({ role }: Props) {
+export default function ApplicationsPage({ role, navigate }: PageProps) {
   const [statusFilter, setStatusFilter] = useState<"all" | keyof typeof statusConfig>("all");
   const [selected, setSelected] = useState<(typeof applications)[0] | null>(null);
 

@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { UserRole } from "@/App";
+import { PageProps } from "@/App";
 import Icon from "@/components/ui/icon";
-
-interface Props { role: UserRole }
 
 const volunteers = [
   { id: 1, name: "Захаров Кирилл Андреевич", skills: ["Регистрация", "Навигация"], events: 8, status: "active", phone: "+7 912 111-22-33", rating: 4.9, assigned: "Городской форум предпринимателей" },
@@ -26,7 +24,7 @@ const taskStatus = {
   done: { label: "Выполнена", color: "bg-emerald-100 text-emerald-800" },
 };
 
-export default function VolunteersPage({ role }: Props) {
+export default function VolunteersPage({ role, navigate }: PageProps) {
   const [tab, setTab] = useState<"list" | "tasks">("list");
   const canManage = role === "organizer" || role === "admin";
 

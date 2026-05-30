@@ -10,7 +10,7 @@ import AdminPage from "@/pages/AdminPage";
 import ProfilePage from "@/pages/ProfilePage";
 import ReportsPage from "@/pages/ReportsPage";
 
-type Page = "home" | "events" | "applications" | "volunteers" | "admin" | "profile" | "reports";
+export type Page = "home" | "events" | "applications" | "volunteers" | "admin" | "profile" | "reports";
 export type UserRole = "guest" | "participant" | "volunteer" | "organizer" | "admin";
 
 export const ROLE_LABELS: Record<UserRole, string> = {
@@ -38,7 +38,12 @@ const NAV_ITEMS: { id: Page; label: string; icon: string }[] = [
   { id: "admin", label: "Администрирование", icon: "Settings2" },
 ];
 
-const PAGE_COMPONENTS: Record<Page, React.ComponentType<{ role: UserRole }>> = {
+export interface PageProps {
+  role: UserRole;
+  navigate: (page: Page) => void;
+}
+
+const PAGE_COMPONENTS: Record<Page, React.ComponentType<PageProps>> = {
   home: HomePage,
   events: EventsPage,
   applications: ApplicationsPage,
@@ -69,7 +74,11 @@ export default function App() {
           }}
         >
           {/* Logo */}
-          <div className="flex items-center gap-3 px-4 py-5" style={{ borderBottom: "1px solid hsl(var(--sidebar-border))" }}>
+          <div
+            className="flex items-center gap-3 px-4 py-5 cursor-pointer"
+            style={{ borderBottom: "1px solid hsl(var(--sidebar-border))" }}
+            onClick={() => setCurrentPage("home")}
+          >
             <div className="w-8 h-8 rounded flex items-center justify-center shrink-0" style={{ background: "hsl(var(--sidebar-primary))" }}>
               <Icon name="Zap" size={15} className="text-white" />
             </div>
@@ -203,7 +212,7 @@ export default function App() {
 
           {/* Page */}
           <main className="flex-1 overflow-y-auto">
-            <PageComponent role={currentRole} />
+            <PageComponent role={currentRole} navigate={setCurrentPage} />
           </main>
         </div>
       </div>
