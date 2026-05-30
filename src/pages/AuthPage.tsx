@@ -72,8 +72,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
               <Icon name="Zap" size={17} className="text-white" />
             </div>
             <div>
-              <div className="text-white font-800 text-sm tracking-tight">EventCore</div>
-              <div className="text-white/40 text-xs">Управление событиями</div>
+              <div className="text-white font-800 text-xs leading-snug tracking-tight">Цифровая платформа организации<br />мероприятий Запорожской области</div>
             </div>
           </button>
         </div>
@@ -131,7 +130,7 @@ export default function AuthPage({ mode, onLogin, onBack, onSwitchMode }: Props)
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: C.blue }}>
               <Icon name="Zap" size={15} className="text-white" />
             </div>
-            <span className="font-800 text-foreground">EventCore</span>
+            <span className="font-800 text-foreground text-xs leading-snug">Цифровая платформа организации<br />мероприятий Запорожской области</span>
           </button>
         </div>
 

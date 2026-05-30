@@ -62,8 +62,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
               <div className="flex-1" style={{ background: C.blue }} />
               <div className="flex-1" style={{ background: C.red }} />
             </div>
-            <span className="text-base font-800 text-foreground tracking-tight">EventCore</span>
-            <span className="text-xs text-muted-foreground hidden sm:block">— платформа управления мероприятиями</span>
+            <span className="text-sm font-800 text-foreground tracking-tight leading-tight">Цифровая платформа организации<br className="hidden sm:block" /> мероприятий Запорожской области</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
@@ -101,14 +100,6 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 py-20 text-center">
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-6 border"
-            style={{ background: C.blueAlpha(0.05), borderColor: C.blueAlpha(0.18), color: C.blue }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-            Цифровая платформа для организации мероприятий
-          </div>
-
           <h1 className="text-4xl sm:text-5xl font-800 text-foreground leading-tight tracking-tight mb-5" style={{ letterSpacing: "-0.03em" }}>
             Единая система<br />
             <span style={{ color: C.blue }}>управления</span>{" "}мероприятиями
@@ -147,7 +138,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                 <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: C.blue }}>
                   <Icon name="Zap" size={12} className="text-white" />
                 </div>
-                <span className="text-white text-sm font-700">EventCore</span>
+                <span className="text-white text-sm font-700">Платформа мероприятий ЗО</span>
               </div>
               <div className="flex items-center gap-0.5 ml-4">
                 {["Мероприятия", "Заявки", "Волонтёры", "Отчёты"].map((t) => (
@@ -155,7 +146,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                 ))}
               </div>
             </div>
-            <div className="p-4 grid grid-cols-4 gap-3" style={{ background: "#f0f2f7" }}>
+            <div className="p-5 grid grid-cols-4 gap-3" style={{ background: "#f0f2f7" }}>
               {[
                 { label: "Мероприятий", val: "24", color: C.blue },
                 { label: "На модерации", val: "18", color: C.red },
@@ -168,7 +159,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                 </div>
               ))}
             </div>
-            <div className="bg-white px-4 py-3 grid grid-cols-3 gap-3">
+            <div className="bg-white px-5 py-4 grid grid-cols-3 gap-3">
               {[
                 { name: "Городской форум", date: "15 июн", status: "Активно", sc: "#2d7a4f" },
                 { name: "Совещание штаба", date: "20 июн", status: "Модерация", sc: "#9a6a1a" },
@@ -228,7 +219,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="p-5 rounded-xl border border-slate-100 hover:-translate-y-0.5 transition-all duration-200 group bg-white"
+                className="p-6 rounded-xl border border-slate-100 hover:-translate-y-0.5 transition-all duration-200 group bg-white"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.08)")}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)")}
@@ -269,7 +260,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
             {roles.map((r, i) => (
               <div
                 key={r.title}
-                className="bg-white rounded-xl p-5 border border-slate-100 text-center hover:-translate-y-0.5 transition-all duration-200"
+                className="bg-white rounded-xl p-6 border border-slate-100 text-center hover:-translate-y-0.5 transition-all duration-200"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.08)")}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)")}
@@ -295,7 +286,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="rounded-xl overflow-hidden grid md:grid-cols-2 border border-slate-200" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
-            <div className="p-8 flex flex-col justify-center" style={{ background: C.blueDark }}>
+            <div className="p-10 flex flex-col justify-center" style={{ background: C.blueDark }}>
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-px w-5" style={{ background: C.red }} />
                 <span className="text-xs font-medium uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.4)" }}>Безопасность</span>
@@ -315,7 +306,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                 Подключить платформу
               </button>
             </div>
-            <div className="p-7 bg-slate-50 flex flex-col justify-center gap-3.5">
+            <div className="p-10 bg-slate-50 flex flex-col justify-center gap-4">
               {[
                 { icon: "Eye", title: "Модерация заявок", desc: "Проверка перед допуском к мероприятию" },
                 { icon: "MapPin", title: "Скрытие адресов", desc: "Место проведения — только подтверждённым" },
@@ -360,7 +351,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
               >
                 <button
-                  className="w-full flex items-center justify-between px-5 py-4 text-left"
+                  className="w-full flex items-center justify-between px-6 py-5 text-left"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   <span className="text-sm font-700 text-foreground pr-4">{item.q}</span>
@@ -372,7 +363,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
                   />
                 </button>
                 {openFaq === i && (
-                  <div className="px-5 pb-4 text-sm text-muted-foreground leading-relaxed animate-fade-in border-t border-slate-100 pt-3">
+                  <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed animate-fade-in border-t border-slate-100 pt-4">
                     {item.a}
                   </div>
                 )}
@@ -431,7 +422,7 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
               <div className="flex-1" style={{ background: C.blue }} />
               <div className="flex-1" style={{ background: C.red }} />
             </div>
-            <span className="text-sm font-700 text-foreground">EventCore</span>
+            <span className="text-xs font-700 text-foreground leading-tight">Цифровая платформа организации<br />мероприятий Запорожской области</span>
             <span className="text-xs text-muted-foreground">© 2025</span>
           </div>
           <div className="flex items-center gap-6 text-xs text-muted-foreground">

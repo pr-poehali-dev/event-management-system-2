@@ -132,8 +132,7 @@ export default function App() {
             </div>
             {!collapsed && (
               <div className="overflow-hidden animate-fade-in">
-                <div className="text-white font-800 text-sm leading-tight tracking-tight">EventCore</div>
-                <div className="text-xs mt-0.5" style={{ color: "hsl(var(--sidebar-foreground) / 0.55)" }}>Управление событиями</div>
+                <div className="text-white font-800 text-xs leading-snug tracking-tight">Платформа мероприятий<br />Запорожской области</div>
               </div>
             )}
           </div>
