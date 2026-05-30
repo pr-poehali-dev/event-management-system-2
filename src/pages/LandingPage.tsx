@@ -128,6 +128,16 @@ export default function LandingPage({ onLogin, onRegister }: Props) {
             </button>
           </div>
 
+          {/* Flag image */}
+          <div className="mt-10 max-w-3xl mx-auto rounded-xl overflow-hidden animate-slide-up" style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.13)" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/c5e2d73a-eff7-45ad-90d8-72fd817b5865/files/3952e5f9-55d3-41b1-9817-5d4232ef7644.jpg"
+              alt="Флаг Российской Федерации"
+              className="w-full object-cover"
+              style={{ height: 260 }}
+            />
+          </div>
+
           {/* Hero preview */}
           <div
             className="mt-12 max-w-3xl mx-auto rounded-xl border overflow-hidden text-left animate-slide-up"
